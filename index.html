@@ -10,7 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    
 
 </head>
 <body>
@@ -23,7 +25,9 @@
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#predict" class="menu-btn">predict</a></li>
                 <li><a href="#contact" class="menu-btn">Contact details</a></li>
+
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -39,7 +43,7 @@
         
                 <div class="text-2">Identifying airline  passenger satisfaction <br>using machine learning</div><br>
                 <div class="text-3">Our Main Aim Is To Predict The Customer Satisfation <h1><span class="typing"></span></h1></div>
-                <a href="empty.txt">PREDICTION</a>
+                <a href="prediction.docx">PREDICTION</a>
             </div>
         </div>
     </section>
@@ -68,41 +72,213 @@
                     <p>- Seat Comfort: Satisfaction with seat comfort (1 to 5)</p>
                     
                     
-                    <a href="predict.html">Predict</a>
+                    <a href="prediction.docx"predict">Predict</a>
                     
                 </div>
             </div>
         </div>
     </section>
-
+    
+    <!--predict section start-->
+    <section class="predict" id="predict">
+        <div class="max-width">
+            <h2 class="title">Airline Passenger Satisfaction Prediction </h2>
+            <div class="content">
+                <form action="submit.html" method="post" onsubmit="return validateForm()">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <div class="error-message" id="gender-error"></div>
+            
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age">
+                    <div class="error-message" id="age-error"></div>
+            
+                    <label for="travel">Type of Travel:</label>
+                    <select id="travel" name="travel">
+                        <option value="Business Travel">Business Travel</option>
+                        <option value="Personal Travel">Personal Travel</option>
+                    </select>
+                    <div class="error-message" id="travel-error"></div>
+            
+                    <label for="class">Class:</label>
+                    <select id="class" name="class">
+                        <option value="Business">Business</option>
+                        <option value="Eco">Economy</option>
+                        <option value="EcoPlus">Economy Plus</option>
+                    </select>
+                    <div class="error-message" id="class-error"></div>
+            
+                    <label for="flight_distance">Flight Distance (miles):</label>
+                    <input type="number" id="flight_distance" name="flight_distance">
+                    <div class="error-message" id="flight_distance-error"></div>
+            
+                    <!-- Missing fields -->
+                    <label for="wifi_service">Inflight WiFi Service (Rating 1-5):</label>
+                    <input type="number" id="wifi_service" name="wifi_service" min="1" max="5">
+                    <div class="error-message" id="wifi_service-error"></div>
+            
+                    <label for="departure_convenience">Departure & Arrival Time Convenience (Rating 1-5):</label>
+                    <input type="number" id="departure_convenience" name="departure_convenience" min="1" max="5">
+                    <div class="error-message" id="departure_convenience-error"></div>
+            
+                    <label for="online_booking">Ease of Online Booking (Rating 1-5):</label>
+                    <input type="number" id="online_booking" name="online_booking" min="1" max="5">
+                    <div class="error-message" id="online_booking-error"></div>
+            
+                    <label for="gate_location">Gate Location:</label>
+                    <select id="gate_location" name="gate_location">
+                        <option value="Very Poor">Very Poor</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Good">Good</option>
+                        <option value="Very Good">Very Good</option>
+                    </select>
+                    <div class="error-message" id="gate_location-error"></div>
+            
+                    <label for="food_and_drink">Food and Drink (Rating 1-5):</label>
+                    <input type="number" id="food_and_drink" name="food_and_drink" min="1" max="5">
+                    <div class="error-message" id="food_and_drink-error"></div>
+            
+                    <label for="online_boarding">Online Boarding (Rating 1-5):</label>
+                    <input type="number" id="online_boarding" name="online_boarding" min="1" max="5">
+                    <div class="error-message" id="online_boarding-error"></div>
+            
+                    <label for="seat_comfort">Seat Comfort (Rating 1-5):</label>
+                    <input type="number" id="seat_comfort" name="seat_comfort" min="1" max="5">
+                    <div class="error-message" id="seat_comfort-error"></div>
+            
+                    <label for="inflight_entertainment">Inflight Entertainment (Rating 1-5):</label>
+                    <input type="number" id="inflight_entertainment" name="inflight_entertainment" min="1" max="5">
+                    <div class="error-message" id="inflight_entertainment-error"></div>
+            
+                    <label for="onboard_service">On-board Service (Rating 1-5):</label>
+                    <input type="number" id="onboard_service" name="onboard_service" min="1" max="5">
+                    <div class="error-message" id="onboard_service-error"></div>
+            
+                    <label for="leg_room_service">Leg Room Service (Rating 1-5):</label>
+                    <input type="number" id="leg_room_service" name="leg_room_service" min="1" max="5">
+                    <div class="error-message" id="leg_room_service-error"></div>
+            
+                    <label for="baggage_handling">Baggage Handling (Rating 1-5):</label>
+                    <input type="number" id="baggage_handling" name="baggage_handling" min="1" max="5">
+                    <div class="error-message" id="baggage_handling-error"></div>
+            
+                    <label for="checkin_service">Check-in Service (Rating 1-5):</label>
+                    <input type="number" id="checkin_service" name="checkin_service" min="1" max="5">
+                    <div class="error-message" id="checkin_service-error"></div>
+            
+                    <label for="inflight_service">Inflight Service (Rating 1-5):</label>
+                    <input type="number" id="inflight_service" name="inflight_service" min="1" max="5">
+                    <div class="error-message" id="inflight_service-error"></div>
+            
+                    <label for="cleanliness">Cleanliness (Rating 1-5):</label>
+                    <input type="number" id="cleanliness" name="cleanliness" min="1" max="5">
+                    <div class="error-message" id="cleanliness-error"></div>
+            
+                    <label for="departure_delay">Departure Delay (minutes):</label>
+                    <input type="number" id="departure_delay" name="departure_delay">
+                    <div class="error-message" id="departure_delay-error"></div>
+            
+                    <label for="arrival_delay">Arrival Delay (minutes):</label>
+                    <input type="number" id="arrival_delay" name="arrival_delay">
+                    <div class="error-message" id="arrival_delay-error"></div>
+            
+                    <button type="submit">Submit</button>
+                </form>
+                <center style="font-size:20px;">
+                <div id="result-message"></div>
+                </center>
+               
+                <script>
+                    function validateForm() {
+                        var requiredFields = ["gender", "age", "travel", "class", "flight_distance", "wifi_service", "departure_convenience", "online_booking", "gate_location", "food_and_drink", "online_boarding", "seat_comfort", "inflight_entertainment", "onboard_service", "leg_room_service", "baggage_handling", "checkin_service", "inflight_service", "cleanliness", "departure_delay", "arrival_delay"];
+                        var isValid = true;
+            
+                        for (var i = 0; i < requiredFields.length; i++) {
+                            var field = requiredFields[i];
+                            var value = document.getElementById(field).value.trim();
+                            if (value === "") {
+                                document.getElementById(field + "-error").innerHTML = "This field is required.";
+                                isValid = false;
+                            } else {
+                                document.getElementById(field + "-error").innerHTML = "";
+                            }
+                        }
+            
+                        var ratingFields = ["wifi_service", "departure_convenience", "online_booking", "food_and_drink", "online_boarding", "seat_comfort", "inflight_entertainment", "onboard_service", "leg_room_service", "baggage_handling", "checkin_service", "inflight_service", "cleanliness"];
+                        var totalRating = 0;
+            
+                        for (var i = 0; i < ratingFields.length; i++) {
+                            var ratingField = ratingFields[i];
+                            var rating = parseInt(document.getElementById(ratingField).value);
+                            if (rating < 1 || rating > 5 || isNaN(rating)) {
+                                document.getElementById(ratingField + "-error").innerHTML = "Ratings must be between 1 and 5.";
+                                isValid = false;
+                            } else {
+                                document.getElementById(ratingField + "-error").innerHTML = "";
+                                totalRating += rating;
+                            }
+                        }
+            
+                        if (isValid) {
+                            // Calculate the average rating
+                            var averageRating = totalRating / ratingFields.length;
+                            var resultMessage = "Average Rating: " + averageRating.toFixed(2);
+                        
+                            if (averageRating > 3) {
+                                resultMessage += "<br>Passenger is satisfied.";
+                            } else {
+                                resultMessage += "<br>Passenger is neutral or dissatisfied.";
+                            }
+            
+                            // Display the result message in the HTML
+                            document.getElementById("result-message").innerHTML = resultMessage;
+                        } else {
+                            // Clear the result message if there are validation errors
+                            document.getElementById("result-message").innerHTML = "";
+                        }
+            
+                        return false; // Prevent the form from actually submitting
+                    }
+                </script>
+                    
+                    
+                
+               
+            </div>
+        </div>
+    </section>
     <!--contact section start-->
     <section class="contact" id="contact">
         <div class="max-width">
             <h2 class="title">Contact me</h2>
             <div class="contact-content">
                 <div class="column left">
-                    <div class="text">Get in Touch</div>
+                   
                     <p>I spends more time on social media and if any queries u can message me by email.</p>
                     <div class="icons">
                         <div class="row">
                             <i class="fas fa-user"></i>
                             <div class="info">
-                                <div class="head">Name</div>
-                                <div class="sub-title">Dasi Santhosh</div>
+                                <div class="head" style="color:#FAF3E0">Name</div>
+                                <div class="sub-title" style="color:#FAF3E0">Dasi Santhosh</div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fas fa-user"></i>
                             <div class="info">
-                                <div class="head">Address</div>
-                                <div class="sub-title">Telangana,India</div>
+                                <div class="head" style="color:#FAF3E0">Address</div>
+                                <div class="sub-title" style="color:#FAF3E0">Telangana,India</div>
                             </div>
                         </div>
                         <div class="row">
                             <i class="fas fa-envelope"></i>
                             <div class="info">
-                                <div class="head">Email</div>
-                                <div class="sub-title">santhoshdasi441@gmail.com</div>
+                                <div class="head" style="color:#FAF3E0">Email</div>
+                                <div class="sub-title" style="color:#FAF3E0">santhoshdasi441@gmail.com</div>
                             </div>
                         </div>
                     </div>
@@ -136,7 +312,8 @@
     <footer>
         <span>Created By <a href="#">Santhosh Dasi</a>  <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
     </footer>
-    <script src="script.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
