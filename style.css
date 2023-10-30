@@ -38,7 +38,7 @@ html{
     transition:all 0.3s ease;
 }
 .navbar .logo a{
-	color:black;
+	color:yellow;
 	font-size:20px;
 	 display:inline-block;
 	 text-shadow: #111;
@@ -240,12 +240,105 @@ section .title::after{
     background:none;
 }
 
+/*predict styling start*/
+
+
+.predict .max-width .content form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+/* Style labels */
+.predict label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Style input and select elements */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style error messages */
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+/* Style the submit button */
+.predict button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* Add hover effect to the submit button */
+.predict button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+/* Style the result message */
+#result-message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Apply some spacing for the form */
+.content {
+  margin: 20px;
+}
+
+/* Style the page title */
+.predict .max-width .title {
+  text-align: center;
+  color: #000;
+}
+
+/* Style the section background */
+.predict {
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+/* Additional styling for select elements (dropdowns) */
+.predict select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+
+/* Center the form horizontally on the page */
+.max-width {
+  margin: 0 auto;
+}
+
 
 /*contact styling start*/
 
-.contact .title::after{
-    content:"get in touch";
+.contact{
+        display:flex;
+        background: url("aeroplane2.avif") no-repeat center;
+        height:100vh;
+        background-size:100%;
+        color:#FAF3E0;
+        font-family:'Ubuntu', sans-serif;
 }
+
 .contact .contact-content .column{
     width:calc(50% - 30px);
 }
@@ -333,21 +426,6 @@ section .title::after{
     background:none;
 
 }
-
-/* footer styling start*/
-footer{
-    background: #111;
-    padding: 20px 23px;
-    color:#fff;
-}
-footer span a{
-    color:crimson;
-    text-decoration: none;
-}
-footer span a:hover{
-    text-decoration: underline;
-}
-
 
 
 
@@ -438,6 +516,7 @@ footer span a:hover{
     }
     .about .about-content .right{
         flex:100%;
+        margin-top: 100px;
     }
     .services .service-content .card{
         width: calc(50% - 10px);
